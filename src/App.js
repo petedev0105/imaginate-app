@@ -4,31 +4,52 @@ import "./App.css";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Account from "./components/Account";
+import Landing from "./components/Landing";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 
 function App() {
   return (
-    <Container style={{ width: "400px" }}>
+    <Container>
       <Row>
         <Col>
           <UserAuthContextProvider>
             <Routes>
               <Route
-                path="/home"
+                exact path="/home"
                 element={
                   <ProtectedRoute>
                     <Home />
                   </ProtectedRoute>
                 }
               />
-              <Route path="/" element={<Login />} />
+              <Route
+                exact path="/account"
+                element={
+                  <ProtectedRoute>
+                    <Account />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                exact path="/folder/:folderId"
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+
+              <Route path="/" element={<Landing />} />
             </Routes>
           </UserAuthContextProvider>
         </Col>
       </Row>
-    </Container>
+      </Container>
+    
   );
 }
 

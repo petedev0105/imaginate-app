@@ -6,10 +6,16 @@ import {
   signOut,
   GoogleAuthProvider,
   signInWithPopup,
+  browserSessionPersistence,
+  setPersistence
 } from "firebase/auth";
 import { auth } from "../firebase";
 
 const userAuthContext = createContext();
+
+export function useUserAuth() {
+  return useContext(userAuthContext);
+}
 
 export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState({});
@@ -33,7 +39,7 @@ export function UserAuthContextProvider({ children }) {
       console.log("Auth", currentuser);
       setUser(currentuser);
     });
-
+    
     return () => {
       unsubscribe();
     };
@@ -46,8 +52,4 @@ export function UserAuthContextProvider({ children }) {
       {children}
     </userAuthContext.Provider>
   );
-}
-
-export function useUserAuth() {
-  return useContext(userAuthContext);
 }
