@@ -75,10 +75,10 @@ function Home() {
     </Navbar>
 
     {/* Main */}
-    <Container>
+    {/* <Container> */}
 
     <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3" transition={true}>
-      <Tab eventKey="home" title="🦄Dashboard" className="home-tab">
+      <Tab eventKey="home" title="Dashboard" className="home-tab">
       <div className="add-buttons">
       <AddFolderButton currentFolder={folder} />
       <AddFileButton currentFolder={folder} />
@@ -90,7 +90,7 @@ function Home() {
 
       {/* Folders */}
       {childFolders.length == 0 && childFiles.length == 0 && folder != ROOT_FOLDER &&(
-        <h3 className="folder-empty">This folder is empty! 😬</h3>
+        <h3 className="folder-empty">This folder is empty!😬</h3>
       )}
 
       {childFolders.length > 0 && (
@@ -115,17 +115,17 @@ function Home() {
         </div>
       )}
         </Tab>
-        <Tab eventKey="contact" title="🔗Shared with me" className="home-tab">
+        <Tab eventKey="contact" title="Shared with me" className="home-tab">
           <SharedWithMe />
         </Tab>
-        <Tab eventKey="recently" title="📅Recently added" className="home-tab">
+        <Tab eventKey="recently" title="Recently added" className="home-tab">
           <RecentlyAdded />
         </Tab>
-        <Tab eventKey="profile" title="❤️Favourites" className="home-tab">
+        <Tab eventKey="profile" title="Favourites" className="home-tab">
           <Favourites />
         </Tab>
       </Tabs>
-      </Container>
+      {/* </Container> */}
     </>
   );
 };

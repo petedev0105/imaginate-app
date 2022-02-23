@@ -6,7 +6,7 @@ import SettingsFolderButton from "./SettingsFolderButton"
 
 function Folder({folder}) {
   return (
-    <Card style={{ width: '18rem' }} className="folder-card" border="warning">
+    <Card style={{ width: '18rem' }} className="folder-card" >
       <Card.Body>
         <Card.Title className="bold-text">{folder.name}</Card.Title>
         <Card.Text>
