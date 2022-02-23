@@ -1,7 +1,7 @@
 import {React, useState} from 'react'
-import {Dropdown, DropdownButton, Modal, Button, Form} from "react-bootstrap"
+import {Dropdown, DropdownButton, Modal, Button, Form, ListGroup} from "react-bootstrap"
 import {database, db} from "../firebase"
-import { deleteDoc, doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore"
+import { deleteDoc, doc, updateDoc, arrayUnion, arrayRemove, collection, query, where, getDocs } from "firebase/firestore"
 
 export default function SettingsFolderButton({folder}) {
     const [open, setOpen] = useState(false)
@@ -36,15 +36,17 @@ export default function SettingsFolderButton({folder}) {
     function handleAddUser(e){
         e.preventDefault()
         const folderRef = doc(db, "folders", folder.id);
-        const fileRef = doc(db, "files", folder.id);
+        const fileRef = collection(db, "files");
 
-        if(email != "" || email != null ){
+        if(email != ""){
             updateDoc(folderRef, {
                 members: arrayUnion(email)
             })
-            updateDoc(fileRef, {
-                members: arrayUnion(email)
-            })
+
+            // const f = query(fileRef, where("folderId", "==", folder.id));
+            
+        }else{
+            alert("email must exist!")
         }
 
         closeSettingsModal()
@@ -93,11 +95,11 @@ export default function SettingsFolderButton({folder}) {
                     <Form.Control type="email" placeholder="type a valid email address..." onChange={e => setEmail(e.target.value)}></Form.Control>
 
                     <span>Members added:</span>
+                    <ListGroup className="members-list">
                     {folder.members.map((child) => (
-                        <ul>
-                            <li key={child.id}>{child}</li>
-                        </ul>
+                            <ListGroup.Item>{child}</ListGroup.Item>
                     ))}
+                    </ListGroup>
 
                     
                 </Modal.Body>

@@ -6,12 +6,13 @@ import SettingsFolderButton from "./SettingsFolderButton"
 
 function Folder({folder}) {
   return (
-    <Card style={{ width: '18rem' }} className="folder-card">
+    <Card style={{ width: '18rem' }} className="folder-card" border="warning">
       <Card.Body>
-        <Card.Title>{folder.name}</Card.Title>
+        <Card.Title className="bold-text">{folder.name}</Card.Title>
         <Card.Text>
           {folder.description}
         </Card.Text>
+        
 
       <div className="folder-buttons">
       <Button to={{
@@ -21,6 +22,9 @@ function Folder({folder}) {
         </Button>
         <SettingsFolderButton folder={folder}/>
       </div>
+      <small><span className="bold-text">Creator:</span> {folder.creator}</small>
+      <br></br>
+      <small><span className="bold-text">Created at:</span> {folder.createdAt.toDate().toDateString()}</small>
         
       </Card.Body>
     </Card>

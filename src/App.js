@@ -11,7 +11,6 @@ import { UserAuthContextProvider } from "./context/UserAuthContext";
 
 function App() {
   return (
-    <Container>
       <Row>
         <Col>
           <UserAuthContextProvider>
@@ -48,8 +47,6 @@ function App() {
           </UserAuthContextProvider>
         </Col>
       </Row>
-      </Container>
-    
   );
 }
 

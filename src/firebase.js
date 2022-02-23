@@ -4,13 +4,14 @@ import { getStorage } from "firebase/storage";
 import {getFirestore, collection, doc, setDoc} from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCQwRSZG8BLalVQNDqhAgLpzPstfLDRhf0",
-  authDomain: "imaginate-917b8.firebaseapp.com",
-  projectId: "imaginate-917b8",
-  storageBucket: "imaginate-917b8.appspot.com",
-  messagingSenderId: "730971243605",
-  appId: "1:730971243605:web:922276f8c8d6e14a9b40dc",
-  measurementId: "G-C5388MK0TT"
+  apiKey: "AIzaSyBc5g1p6yxPBcyOblejgdKO1ZLJ_BC_16A",
+  authDomain: "imaginate-ffffa.firebaseapp.com",
+  databaseURL: "https://imaginate-ffffa-default-rtdb.firebaseio.com",
+  projectId: "imaginate-ffffa",
+  storageBucket: "imaginate-ffffa.appspot.com",
+  messagingSenderId: "1017570082296",
+  appId: "1:1017570082296:web:a47e09b6d7d20cac13aa0d",
+  measurementId: "G-YYCE9G7EW9"
 };
 
 // Initialize Firebase

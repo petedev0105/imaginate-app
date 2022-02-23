@@ -39,6 +39,7 @@ export default function AddFolderButton({ currentFolder }) {
  
         // add new folder to firestore database as a new document in a collection
         setDoc(doc(db, "folders", nanoid()), {
+            creator: user.email,
             name: name,
             userId: user.uid,
             parentId: currentFolder.id,

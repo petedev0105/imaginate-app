@@ -8,26 +8,37 @@ body {
   margin-top: 50px;
 }
 
+.inv{
+  margin-right: 20px;
+}
+
 .main-text h1{
   font-size: 50px;
   font-weight: bold;
 }
 
 .home-nav{
-  margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px;
-  border-radius: 10px;
-  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.home-nav h3{
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .securely{
-  color: darkcyan;
+  color: lightseagreen;
 }
 
 .landing-img{
   max-width: 700px;
   margin: auto;
+}
+
+.home-tab{
+  color: black;
 }
 
 .landing-body{
@@ -38,9 +49,44 @@ body {
   margin-top: 10px;
 }
 
+.a-text{
+  color: black;
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+.bold-text{
+  font-weight: bold;
+}
+
+#uncontrolled-tab-example-tab-contact{
+  color: black;
+}
+
+#uncontrolled-tab-example-tab-recently{
+  color: black;
+}
+
+#uncontrolled-tab-example-tab-profile{
+  color: black;
+}
+
+#uncontrolled-tab-example-tab-home{
+  color: black;
+}
+
 .landing-nav{
   margin-top: 20px;
   border-radius: 10px;
+}
+
+/* .delete-member-btn{
+  position: relative;
+  right: 0;
+} */
+
+.members-list{
+  justify-content: space-between;
 }
 
 .landing-buttons{
@@ -54,7 +100,8 @@ body {
 }
 
 .folder-card{
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px; */
+  border-radius: 15px;
 }
 
 .folder-empty{
@@ -107,6 +154,10 @@ a{
   margin-top: 20vh;
 }
 
+.add-buttons{
+  justify-content:center;
+}
+
 .box {
   border: 1px solid #dfdfdf;
   background-color: #fff;
@@ -122,4 +173,10 @@ a{
 .g-btn > div > svg {
   width: 40px !important;
   height: 38px !important;
+}
+
+@media(max-width:768px){
+  .folder-card{
+    width:100%;
+  }
 }

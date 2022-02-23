@@ -54,7 +54,7 @@ export default function AddFileButton({currentFolder}) {
             })
         },
         (error) => {
-            alert('error lmao')
+            console.log(error)
         }, 
         () => {
             setUploadingFiles(prevUploadingFiles => {

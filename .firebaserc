@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "imaginate-917b8"
-  }
+    "default": "imaginate-ffffa",
+    "staging": "imaginate-ffffa",
+    "imaginate": "imaginate-ffffa"
+  },
+  "targets": {}
 }
