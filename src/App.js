@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Account from "./components/Account";
 import Landing from "./components/Landing";
+import Explore from "./components/Explore";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 
@@ -28,6 +29,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Account />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                exact path="/explore"
+                element={
+                  <ProtectedRoute>
+                    <Explore />
                   </ProtectedRoute>
                 }
               />

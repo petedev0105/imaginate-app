@@ -38,7 +38,10 @@ export function UserAuthContextProvider({ children }) {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
       console.log("Auth", currentuser);
       setUser(currentuser);
+      // setPersistence(auth, browserSessionPersistence);
     });
+
+    
     
     return () => {
       unsubscribe();

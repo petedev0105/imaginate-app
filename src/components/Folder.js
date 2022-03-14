@@ -5,8 +5,12 @@ import SettingsFolderButton from "./SettingsFolderButton"
 
 
 function Folder({folder}) {
+  var color = folder.color;
+  const atr ='3.5px solid ';
+  const bleft = atr.concat(color);
+
   return (
-    <Card style={{ width: '18rem' }} className="folder-card" >
+    <Card style={{ width: '18rem', borderLeft: bleft}} className="folder-card" >
       <Card.Body>
         <Card.Title className="bold-text">{folder.name}</Card.Title>
         <Card.Text>

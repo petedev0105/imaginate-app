@@ -7,6 +7,7 @@ import { nanoid } from 'nanoid'
 import { useUserAuth } from "../context/UserAuthContext"
 import { useFolder } from "../hooks/useFolder"
 import {ROOT_FOLDER} from "../hooks/useFolder"
+var randomColor = require('randomcolor');
 
 
 
@@ -16,6 +17,7 @@ export default function AddFolderButton({ currentFolder }) {
     const [description, setDescription] = useState("");
     const { user } = useUserAuth();
     const { folder } = useFolder();
+    var rnd = randomColor();
 
     function openModal() {
         setOpen(true);
@@ -38,16 +40,50 @@ export default function AddFolderButton({ currentFolder }) {
         console.log(user.email)
  
         // add new folder to firestore database as a new document in a collection
-        setDoc(doc(db, "folders", nanoid()), {
-            creator: user.email,
-            name: name,
-            userId: user.uid,
-            parentId: currentFolder.id,
-            description: description,
-            members: currentFolder.members,
-            path: path,
-            createdAt: new Date()
-        })
+        if(name != ""){
+            if(description == ""){
+                var desc = 'Collection of ' + name + '.';
+                
+                setDoc(doc(db, "folders", nanoid()), {
+                    creator: user.email,
+                    name: name,
+                    userId: user.uid,
+                    parentId: currentFolder.id,
+                    description: desc,
+                    color: rnd,
+                    members: currentFolder.members,
+                    path: path,
+                    createdAt: new Date()
+                })
+            }else{
+                setDoc(doc(db, "folders", nanoid()), {
+                    creator: user.email,
+                    name: name,
+                    userId: user.uid,
+                    parentId: currentFolder.id,
+                    description: description,
+                    color: rnd,
+                    members: currentFolder.members,
+                    path: path,
+                    createdAt: new Date()
+                })
+            }
+        }else{
+            alert("name is empty!")
+        }
+
+        if(description == "" && name != ""){
+            const desc = 'Collection of'+name;
+            
+            setDoc(doc(db, "folders", nanoid()), {
+                description: desc
+            })
+        }else{
+            setDoc(doc(db, "folders", nanoid()), {
+                description: description
+            })
+        }
+        
 
         setName("")
         setDescription("")
@@ -57,7 +93,7 @@ export default function AddFolderButton({ currentFolder }) {
   return (
       <>
         {/* Create folder button */}
-        <Button onClick={openModal} variant="dark" bg="dark" className="create-folder-button">📁New Folder</Button>
+        <Button onClick={openModal} variant="primary" className="create-folder-button">New Folder</Button>
         
         {/* Modal */}
         <Modal show={open} onHide={closeModal}>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, DropdownButton, Dropdown, Container, Row, Col, Navbar, Nav, NavDropdown , Form, Tab, Tabs} from "react-bootstrap";
+import {Link} from "react-router-dom"
 import { useNavigate } from "react-router";
 import { useUserAuth } from "../context/UserAuthContext";
 import Folder from "./Folder"
@@ -33,59 +34,59 @@ function Home() {
   return (
     <>
     {/* Navigation */}
-    <Navbar className="home-nav">
-          <h3>🖖</h3>
-          <Form>
-          <Form.Control type="input" placeholder="search for a folder..." ></Form.Control>
-          </Form>
-          <Navbar.Text >
-          <a href="#" className="a-text">Explore</a>
-          </Navbar.Text>
-          <Navbar.Text >
-          <a href="#" className="a-text">Terms & Conditions</a>
-          </Navbar.Text>
-          <Navbar.Text>
-          <a href="#" className="a-text">Help</a>
-          </Navbar.Text>
-          <Navbar.Text >
-          <a href="#" className="a-text">Activities</a>
-          </Navbar.Text>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text className="inv">
-          <a href="#" className="a-text">🙋Invite a friend</a>
-          </Navbar.Text>
-          <Navbar.Text>
-          <DropdownButton id="dropdown-basic-button" title="Account" align="end" variant="warning">
-              <Dropdown.Item href="/account">{user && user.email}</Dropdown.Item>
-              <Dropdown.Item href="#/action-3" onClick={handleLogout}>Logout</Dropdown.Item>
+    <Container>
+      <Navbar className="home-nav">
+            <h3>🖖</h3>
+            <Form>
+            <Form.Control type="input" placeholder="search for a folder..." ></Form.Control>
+            </Form>
 
-              {/* Toggle Dark Mode Switch */}
-              {/* <Form>
-              <Form.Check 
-                type="switch"
-                id="custom-switch"
-                label="Dark mode"
-              />
-            </Form> */}
+            <div className="navLinks">
+              <Navbar.Text >
+              <a href="#" className="a-text">Explore</a>
+              </Navbar.Text>
+              <Navbar.Text>
+              <a href="#" className="a-text">Help</a>
+              </Navbar.Text>
+            </div>
 
-          </DropdownButton>
-          </Navbar.Text>
-          </Navbar.Collapse>
-    </Navbar>
+            <Navbar.Toggle />
+            <Navbar.Collapse className="justify-content-end">
+            <Navbar.Text className="inv">
+            <a href="#" className="a-text inv">🙋Invite a friend</a>
+            </Navbar.Text>
+
+            <Navbar.Text>
+            <DropdownButton id="dropdown-basic-button" title="Account" align="end" variant="primary">
+                <Dropdown.Item as={Link} to='/account'>{user && user.email}</Dropdown.Item>
+                <Dropdown.Item href="#/action-3" onClick={handleLogout}>Logout</Dropdown.Item>
+
+                {/* Toggle Dark Mode Switch */}
+                {/* <Form>
+                <Form.Check 
+                  type="switch"
+                  id="custom-switch"
+                  label="Dark mode"
+                />
+              </Form> */}
+
+                </DropdownButton>
+            </Navbar.Text>
+            </Navbar.Collapse>
+            
+      </Navbar>
 
     {/* Main */}
     {/* <Container> */}
 
-    <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3" transition={true}>
-      <Tab eventKey="home" title="Dashboard" className="home-tab">
-      <div className="add-buttons">
-      <AddFolderButton currentFolder={folder} />
-      <AddFileButton currentFolder={folder} />
-      </div>
       {/* Breadcrumbs */}
       <div className="d-flex align-items-center">
         <FolderBreadcrumbs currentFolder={folder} />
+      </div>
+
+      <div className="add-buttons">
+      <AddFileButton currentFolder={folder} show={folder == ROOT_FOLDER}/>
+      <AddFolderButton currentFolder={folder} />
       </div>
 
       {/* Folders */}
@@ -114,18 +115,7 @@ function Home() {
           ))}
         </div>
       )}
-        </Tab>
-        <Tab eventKey="contact" title="Shared with me" className="home-tab">
-          <SharedWithMe />
-        </Tab>
-        <Tab eventKey="recently" title="Recently added" className="home-tab">
-          <RecentlyAdded />
-        </Tab>
-        <Tab eventKey="profile" title="Favourites" className="home-tab">
-          <Favourites />
-        </Tab>
-      </Tabs>
-      {/* </Container> */}
+      </Container>
     </>
   );
 };
